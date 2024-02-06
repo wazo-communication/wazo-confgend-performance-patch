@@ -2,6 +2,8 @@
 # Copyright 2024 Wazo Team (see the AUTHORS file)
 # SPDX-License-Identifier: GPLv3
 
+set -e
+
 case "$1" in
     build)
     ;;
@@ -12,12 +14,12 @@ case "$1" in
     ;;
 
     install)
-        patch -p1 < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch
+        patch -p1 -d /usr/lib/python3/dist-packages < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch
         systemctl restart wazo-confgend
     ;;
 
     uninstall)
-        patch -R -p1 < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch || true
+        patch -R -p1 -d /usr/lib/python3/dist-packages < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch
         systemctl restart wazo-confgend
     ;;
 
