@@ -14,7 +14,7 @@ case "$1" in
     ;;
 
     install)
-        patch -p1 -d /usr/lib/python3/dist-packages < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch
+        patch --force --reject-file - -p1 -d /usr/lib/python3/dist-packages < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch
         systemctl restart wazo-confgend
     ;;
 
