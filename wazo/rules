@@ -19,7 +19,7 @@ case "$1" in
     ;;
 
     uninstall)
-        patch -R -p1 -d /usr/lib/python3/dist-packages < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch
+        patch -R -p1 -d /usr/lib/python3/dist-packages < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch || true
         systemctl restart wazo-confgend
     ;;
 
