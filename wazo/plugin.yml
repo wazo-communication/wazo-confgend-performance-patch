@@ -1,0 +1,11 @@
+name: wazo-confgend-performance-patch
+namespace: quintana
+version: 0.0.1
+author: Sylvain Boily
+display_name: Confgend performance improvement
+plugin_format_version: 1
+min_wazo_version: 24.01
+max_wazo_version: 24.01
+tags:
+  - patch
+homepage: https://github.com/sboily/wazo-confgend-performance-patch

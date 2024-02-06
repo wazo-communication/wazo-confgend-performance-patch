@@ -1,0 +1,31 @@
+#!/bin/sh
+# Copyright 2024 Wazo Team (see the AUTHORS file)
+# SPDX-License-Identifier: GPLv3
+
+case "$1" in
+    build)
+    ;;
+
+    package)
+        mkdir -p ${pkgdir}/usr/share/wazo-confgend-performance-patch
+        cp wazo-confgend.patch ${pkgdir}/usr/share/wazo-confgend-performance-patch
+    ;;
+
+    install)
+        patch -p1 < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch
+        systemctl restart wazo-confgend
+    ;;
+
+    uninstall)
+        patch -R -p1 < /usr/share/wazo-confgend-performance-patch/wazo-confgend.patch || true
+        systemctl restart wazo-confgend
+    ;;
+
+    postrm)
+    ;;
+
+    *)
+        echo "$0 called with unknown argument '$1'" >&2
+        exit 1
+    ;;
+esac
